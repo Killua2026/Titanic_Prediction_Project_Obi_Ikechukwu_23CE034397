@@ -1,0 +1,6 @@
+Name: Obi Ikechukwu Joseph
+Matric Number: 23CE034397
+Machine Learning Algorithm Used: Random Forest Classifier
+Model persistence method used: Joblib
+Live URL: https://titanic-prediction-project-obi-ikechukwu.onrender.com
+GitHub repository link: https://github.com/Killua2026/Titanic_Prediction_Project_Obi_Ikechukwu_23CE034397
