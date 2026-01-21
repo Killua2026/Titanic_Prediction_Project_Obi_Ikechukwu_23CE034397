@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Titanic Survival Predictor</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f0f2f5; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+        .container { background-color: white; padding: 30px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); width: 400px; }
+        h2 { text-align: center; color: #333; }
+        .form-group { margin-bottom: 15px; }
+        label { display: block; margin-bottom: 5px; color: #666; }
+        input, select { width: 100%; padding: 10px; box-sizing: border-box; border: 1px solid #ccc; border-radius: 5px; }
+        button { width: 100%; padding: 12px; background-color: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 16px; margin-top: 10px; }
+        button:hover { background-color: #0056b3; }
+        .result { margin-top: 20px; padding: 15px; text-align: center; border-radius: 5px; font-weight: bold; }
+        .survived { background-color: #d4edda; color: #155724; }
+        .died { background-color: #f8d7da; color: #721c24; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>🚢 Titanic Survival Check</h2>
+        <form action="/predict" method="POST">
+            
+            <div class="form-group">
+                <label>Passenger Class:</label>
+                <select name="Pclass" required>
+                    <option value="1">1st Class (Rich)</option>
+                    <option value="2">2nd Class (Middle)</option>
+                    <option value="3">3rd Class (Poor)</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Sex:</label>
+                <select name="Sex" required>
+                    <option value="0">Male</option>
+                    <option value="1">Female</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Age:</label>
+                <input type="number" name="Age" min="1" max="100" required placeholder="e.g. 25">
+            </div>
+
+            <div class="form-group">
+                <label>Number of Siblings/Spouses:</label>
+                <input type="number" name="SibSp" min="0" max="10" required value="0">
+            </div>
+
+            <div class="form-group">
+                <label>Ticket Fare ($):</label>
+                <input type="number" name="Fare" min="0" step="0.01" required placeholder="e.g. 50.00">
+            </div>
+
+            <button type="submit">Predict Survival</button>
+        </form>
+
+        {% if prediction_text %}
+        <div class="result {{ result_class }}">
+            {{ prediction_text }}
+        </div>
+        {% endif %}
+    </div>
+
+</body>
+</html>
